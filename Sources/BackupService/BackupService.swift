@@ -3,11 +3,11 @@ import Foundation
 public class BackupService {
     public init(for codable: Codable) {
         self.codable = codable
-        self.filePath = NSHomeDirectory() + "/Documents/" + "\(codable.self).txt"
+        self.filePath = NSHomeDirectory() + "/Documents/" + "\(UUID().uuidString).txt"
         self.documentsUrl = FileManager
             .default
             .urls(for: .documentDirectory, in: .userDomainMask)[0]
-        self.fileUrl = documentsUrl.appendingPathComponent("\(codable.self).txt")
+        self.fileUrl = documentsUrl.appendingPathComponent("\(UUID().uuidString).txt")
     }
 
     public enum BackupServiceError: Error {
